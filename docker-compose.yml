@@ -45,5 +45,5 @@ services:
       tail -f log/development.log"
     volumes:
       - .:/data # mount current directory into the image
-      - db:/data/db/development.sqlite3
+      - db:/data/db
       - bundled:/usr/local/bundle
