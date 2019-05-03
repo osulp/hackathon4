@@ -68,4 +68,7 @@ Rails.application.configure do
   end
 
   config.public_file_server.enabled = ENV['RAILS_SERVE_STATIC_FILES'].present?
+
+  # Whitelist docker containers for webconsole during development
+  config.web_console.whitelisted_ips = ['172.0.0.0/8', '192.0.0.0/8']
 end

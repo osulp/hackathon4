@@ -7,6 +7,7 @@ networks:
 volumes:
   db:
   bundled:
+  node:
 
 services:
   ##
@@ -41,9 +42,11 @@ services:
       - 3000:3000
     command: >
       bash -c "./build/entrypoint.sh &&
-      bundle exec puma -C config/puma/development.rb --dir /data --pidfile /data/tmp/pids/puma.pid -b tcp://0.0.0.0:3000 &&
+      rm -f /data/tmp/pids/puma.pid &&
+      bundle exec puma -C config/puma/development.rb --dir /data -b tcp://0.0.0.0:3000 &&
       tail -f log/development.log"
     volumes:
       - .:/data # mount current directory into the image
       - db:/data/db
       - bundled:/usr/local/bundle
+      - node:/data/node_modules
