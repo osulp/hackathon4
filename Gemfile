@@ -37,6 +37,8 @@ gem 'devise_cas_authenticatable'
 gem 'rubycas-client', git: 'https://github.com/osulp/rubycas-client'
 gem 'rubycas-client-rails', git: 'https://github.com/osulp/rubycas-client-rails'
 
+gem 'rails_admin', '~> 1.3'
+
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.1.0', require: false
 
