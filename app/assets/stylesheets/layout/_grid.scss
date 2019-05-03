@@ -1,0 +1,14 @@
+.row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+.col-left {
+  grid-column-start: 1;
+  grid-column-end: span 1;
+}
+
+.col-right {
+  grid-column-start: 2;
+  grid-column-end: span 1;
+}
