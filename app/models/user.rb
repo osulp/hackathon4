@@ -2,6 +2,7 @@
 
 class User < ApplicationRecord
   devise :cas_authenticatable
+  has_one :profile, inverse_of: :user
 
   def cas_extra_attributes=(extra_attributes)
     extra_attributes.each do |name, value|
