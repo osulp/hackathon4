@@ -5,7 +5,6 @@ networks:
   internal:
 
 volumes:
-  db:
   bundled:
   node:
 
@@ -47,6 +46,5 @@ services:
       tail -f log/development.log"
     volumes:
       - .:/data # mount current directory into the image
-      - db:/data/db
       - bundled:/usr/local/bundle
       - node:/data/node_modules
