@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_05_03_171926) do
+ActiveRecord::Schema.define(version: 2019_05_03_182259) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -33,10 +33,39 @@ ActiveRecord::Schema.define(version: 2019_05_03_171926) do
     t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
   end
 
+  create_table "assets", force: :cascade do |t|
+    t.integer "profile_id"
+    t.index ["profile_id"], name: "index_assets_on_profile_id"
+  end
+
+  create_table "assets_skills", id: false, force: :cascade do |t|
+    t.integer "asset_id", null: false
+    t.integer "skill_id", null: false
+    t.index ["asset_id", "skill_id"], name: "index_assets_skills_on_asset_id_and_skill_id"
+  end
+
+  create_table "assets_tools", id: false, force: :cascade do |t|
+    t.integer "asset_id", null: false
+    t.integer "tool_id", null: false
+    t.index ["asset_id", "tool_id"], name: "index_assets_tools_on_asset_id_and_tool_id"
+  end
+
   create_table "categories", force: :cascade do |t|
     t.string "name", default: "", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "experiences", force: :cascade do |t|
+    t.string "name"
+    t.integer "asset_id"
+    t.index ["asset_id"], name: "index_experiences_on_asset_id"
+  end
+
+  create_table "interests", force: :cascade do |t|
+    t.string "name"
+    t.integer "asset_id"
+    t.index ["asset_id"], name: "index_interests_on_asset_id"
   end
 
   create_table "profiles", force: :cascade do |t|
