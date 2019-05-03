@@ -13,4 +13,10 @@ class ApiController < ApplicationController
               end
     render json: @skills
   end
+
+  def skill_name
+    parents = Skill.where('name LIKE ?', "%#{params[:name]}%")
+
+    render json: parents.map { |p| { parent: p, child: p.sub_skills.first } }
+  end
 end
