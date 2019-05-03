@@ -29,7 +29,6 @@ class Search extends React.Component {
 
   search(e) {
     e.preventDefault();
-    alert(`Searching for ${this.state.search}`);
     let search = this.fetchSearch();
     this.setState({ searchResults: search });
     console.log(search);
@@ -46,7 +45,7 @@ class Search extends React.Component {
         <div className="search-results">
           {
             this.state.searchResults.map(result => {
-              return <Asset key={result.parent.id} parent={result.parent} children={result.children} loadPeople={this.loadPeople} />
+              return <Asset key={result.parent.id} parent={result.parent} children={result.children} loadPeople={this.props.loadPeople} />
             })
           }
         </div>
