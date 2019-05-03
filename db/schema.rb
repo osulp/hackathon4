@@ -10,7 +10,23 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_05_03_154307) do
+ActiveRecord::Schema.define(version: 2019_05_03_164522) do
+
+  create_table "skills", force: :cascade do |t|
+    t.string "name", default: "", null: false
+    t.integer "skill_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["skill_id"], name: "index_skills_on_skill_id"
+  end
+
+  create_table "tools", force: :cascade do |t|
+    t.string "name", default: "", null: false
+    t.integer "tool_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["tool_id"], name: "index_tools_on_tool_id"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
