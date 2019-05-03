@@ -10,6 +10,7 @@
     "react-dom": "^16.8.6"
   },
   "devDependencies": {
+    "react-router": "^5.0.0",
     "webpack-dev-server": "^3.3.1"
   }
 }
