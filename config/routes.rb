@@ -9,4 +9,7 @@ Rails.application.routes.draw do
       root to: 'home#index', as: :authenticated_root
     end
   end
+
+  get '/api/skills', to: 'api#skill'
+  get '/api/skills/:id', to: 'api#skill'
 end
