@@ -20,6 +20,18 @@ class UserListItem extends React.Component {
           <br />
           <b>Email: </b>
           <span>{this.props.user.email}</span>
+          <br />
+          <b>Skillz:</b>
+          <br />
+          <ul>
+            {this.props.user.skills.map(function(item, i) {
+              return (
+                <li key={i} style={{ width: "100%" }}>
+                  {item}
+                </li>
+              )
+            })}
+          </ul>
         </div>
       </li>
     )
