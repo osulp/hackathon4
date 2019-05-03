@@ -15,6 +15,13 @@ class App extends React.Component {
 
   loadPeople(id) {
     //alert(`Loading ${id}`);
+    fetch(`/api/skill/${id}/users`)
+      .then(res => res.json())
+      .then(json => {
+        console.log(json);
+        this.setState({ users: json.users });
+      });
+    /*
     this.setState({
       users: [
         {
@@ -31,6 +38,7 @@ class App extends React.Component {
         }
       ]
     })
+    */
   }
 
   render() {

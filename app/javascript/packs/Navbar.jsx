@@ -8,7 +8,7 @@ class Navbar extends React.Component {
           <img src="https://communications.oregonstate.edu/sites/communications.oregonstate.edu/files/osu-primarylogo-2-compressor.jpg" />
         </a>
 
-        <h1>(Professional) Friend Finder</h1>
+        <h1>The Beaver Skills Network</h1>
       </nav>
     );
   }
