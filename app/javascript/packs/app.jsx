@@ -18,11 +18,13 @@ class App extends React.Component {
           users={[
             {
               id: 1,
+              username: "abc@user.com",
               email: "abc@user.com",
               img: "https://thispersondoesnotexist.com/image"
             },
             {
               id: 2,
+              username: "abc@user.com",
               email: "abc@user.com",
               img: "https://thispersondoesnotexist.com/image"
             }

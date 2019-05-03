@@ -12,6 +12,7 @@ class UserListItem extends React.Component {
           <img src={this.props.user.img} style={{ width: "100px" }} />
         </div>
         <div style={{ width: "50%", float: "left" }}>
+          <span>{this.props.user.username}</span>
           <span>{this.props.user.email}</span>
         </div>
       </li>
