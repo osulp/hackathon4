@@ -1,11 +1,12 @@
-import React from 'react';
-import Navbar from './Navbar.jsx';
-import Body from './Body.jsx';
+import React from "react"
+import Navbar from "./Navbar.jsx"
+import Body from "./Body.jsx"
+import UserList from "./UserList.jsx"
 
 class App extends React.Component {
   constructor(props) {
-    super(props);
-    console.log("Hello world!");
+    super(props)
+    console.log("Hello world!")
   }
 
   render() {
@@ -13,9 +14,23 @@ class App extends React.Component {
       <div id="main">
         <Navbar />
         <Body />
+        <UserList
+          users={[
+            {
+              id: 1,
+              email: "abc@user.com",
+              img: "https://thispersondoesnotexist.com/image"
+            },
+            {
+              id: 2,
+              email: "abc@user.com",
+              img: "https://thispersondoesnotexist.com/image"
+            }
+          ]}
+        />
       </div>
     )
   }
 }
 
-export default App;
+export default App
