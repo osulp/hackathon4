@@ -1,0 +1,12 @@
+.nav {
+  display: flex;
+  justify-content: space-between;
+  align-content: center;
+  padding: 10px;
+  a img {
+    width: 250px;
+  }
+  h1 {
+    padding-top: 20px;
+  }
+}
