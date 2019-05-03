@@ -6,10 +6,10 @@ class ApiController < ApplicationController
   def skill
     @skills = if params[:id]
                 parent = Skill.find(params[:id])
-                { parent: parent, child: parent.sub_skills.first }
+                { parent: parent, children: parent.sub_skills }
               else
                 parents = Skill.where(skill_id: nil)
-                parents.map { |p| { parent: p, child: p.sub_skills.first } }
+                parents.map { |p| { parent: p, children: p.sub_skills } }
               end
     render json: @skills
   end
@@ -17,7 +17,7 @@ class ApiController < ApplicationController
   def skill_name
     parents = Skill.where('name LIKE ?', "%#{params[:name]}%")
 
-    render json: parents.map { |p| { parent: p, child: p.sub_skills.first } }
+    render json: parents.map { |p| { parent: p, children: p.sub_skills } }
   end
 
   def users_by_skill
