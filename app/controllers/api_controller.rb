@@ -22,7 +22,7 @@ class ApiController < ApplicationController
 
   def users_by_skill
     skill = Skill.find(params[:id])
-    users = skill.assets.map { |a| a.profile.user }
+    users = skill.assets.map { |a| a.profile.user.with_skills }
 
     render json: {
       skill: skill,
