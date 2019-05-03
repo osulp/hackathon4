@@ -10,6 +10,7 @@ Rails.application.routes.draw do
     end
   end
 
+  get '/api/skill/:id/users', to: 'api#users_by_skill'
   get '/api/skill/name/:name', to: 'api#skill_name'
   get '/api/skills', to: 'api#skill'
   get '/api/skills/:id', to: 'api#skill'

@@ -19,4 +19,14 @@ class ApiController < ApplicationController
 
     render json: parents.map { |p| { parent: p, child: p.sub_skills.first } }
   end
+
+  def users_by_skill
+    skill = Skill.find(params[:id])
+    users = skill.assets.map { |a| a.profile.user }
+
+    render json: {
+      skill: skill,
+      users: users
+    }
+  end
 end
