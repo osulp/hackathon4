@@ -12,13 +12,22 @@ class Search extends React.Component {
 
     this.handleChange = this.handleChange.bind(this);
     this.search = this.search.bind(this);
+    this.renderResults = this.renderResults.bind(this);
   }
 
 
   fetchSearch() {
+    /*
     return (
       [{ "parent": { "id": 4, "name": "Middle Child", "skill_id": 3, "created_at": "2019-05-03T17:21:01.913Z", "updated_at": "2019-05-03T17:21:01.913Z", "category_id": null }, "children": [{ "id": 5, "name": "Last Child", "skill_id": 4, "created_at": "2019-05-03T17:21:17.920Z", "updated_at": "2019-05-03T17:21:17.920Z", "category_id": null }] }, { "parent": { "id": 5, "name": "Last Child", "skill_id": 4, "created_at": "2019-05-03T17:21:17.920Z", "updated_at": "2019-05-03T17:21:17.920Z", "category_id": null }, "children": [] }]
     )
+    */
+    let results = fetch(`/api/skill/name/${escape(this.state.search)}`)
+      .then(res => res.json())
+      .then(json => {
+        console.log(json);
+        this.setState({ searchResults: json });
+      });
   };
 
 
@@ -29,10 +38,19 @@ class Search extends React.Component {
 
   search(e) {
     e.preventDefault();
-    let search = this.fetchSearch();
-    this.setState({ searchResults: search });
-    console.log(search);
-    console.log(this.state.searchResults);
+    this.fetchSearch();
+  }
+
+  renderResults() {
+    if (this.state.searchResults.length > 0) {
+      return (
+        this.state.searchResults.map(result => {
+          return <Asset key={result.parent.id} parent={result.parent} children={result.children} loadPeople={this.props.loadPeople} />
+        })
+      )
+    } else {
+      return <p>Nothing found</p>
+    }
   }
   render() {
     return (
@@ -44,9 +62,7 @@ class Search extends React.Component {
         </div>
         <div className="search-results">
           {
-            this.state.searchResults.map(result => {
-              return <Asset key={result.parent.id} parent={result.parent} children={result.children} loadPeople={this.props.loadPeople} />
-            })
+            this.renderResults()
           }
         </div>
       </div>
